@@ -42,7 +42,7 @@ O.x.
 вывод: 3
 
 ### example 3
-cmType=Bishop, boardSize={5,5}, startCoords={2, 2}, obstacles={{1,1}, {1, 3}, {3, 1}, {3, 3}}
+cmType=Bishop, boardSize={5,5}, startCoords={2, 2}, obstacles={{4,4}}
 ``` 
 .....
 ...O.
