@@ -30,15 +30,26 @@ namespace AttackSolverTest
             foreach (var inst in insts)
             {
                 output.WriteLine("Testing " + inst.GetType().FullName);
+                /*
                 // Rook - ladja
+                    .o.
+                    Ro.
+                 */
                 var res = inst.CountUnderAttack(ChessmanType.Rook, new Size(3, 2), new Point(1, 1),
-                    new [] { new Point(2, 2), new Point(1, 3)  });
-                Assert.Equal(2, res);
+                    new[] { new Point(2, 2), new Point(2, 1) });
+                Assert.Equal(1, res);
 
+                /*
                 // Bishop - slon
+                    ....
+                    ....
+                    o.o.
+                    .B..
+                    ....
+                 */
                 res = inst.CountUnderAttack(ChessmanType.Bishop, new Size(4, 5), new Point(2, 2),
-                    new [] {new Point(3, 3), new Point(1, 3), });
-                Assert.Equal(3, res);
+                    new[] { new Point(1, 3), new Point(3, 3)});
+                Assert.Equal(2, res);
             }
         }
 
@@ -47,7 +58,7 @@ namespace AttackSolverTest
             return AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(mytype => mytype.GetInterfaces().Contains(typeof(IAttackCounter)))
-                .Select(type => (IAttackCounter) Activator.CreateInstance(type)).ToList();
+                .Select(type => (IAttackCounter)Activator.CreateInstance(type)).ToList();
         }
     }
 }
